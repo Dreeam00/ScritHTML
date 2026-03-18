@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScritHTML v2.0 | Premium Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../scrit.js"></script>
+</head>
+
+<body>
+    <store name="site">
+        <value name="accent">"#22d3ee"</value>
+        <value name="glow">"0 0 20px rgba(34, 211, 238, 0.2)"</value>
+        <value name="isCyan">true</value>
+        <value name="boxSize">120</value>
+        <value name="boxRotate">45</value>
+    </store>
+
+            <style>
+                :root {
+                    --current-accent: {
+                        site.accent
+                    }
+
+                    ;
+
+                    --current-glow: {
+                        site.glow
+                    }
+
+                    ;
+                }
+            </style>
+
+            <nav class="navbar glass">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration:none; display:flex; align-items:center;">
+                        <img src="images/Light_Logo.png" alt="ScritHTML Logo" style="height:40px; margin-right:10px;">
+                    </a>
+                </div>
+                <div class="links">
+                    <a href="Learn.html">学ぶ</a>
+                    <a href="Docs.html">ドキュメント</a>
+                    <a href="Learn.html" class="btn-primary"
+                        style="margin-left: 30px; font-size: 0.75rem; padding: 10px 20px;">今すぐ始める</a>
+                </div>
+            </nav>
+
+            <header class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title" style="display:flex; align-items:center; justify-content:center; gap:15px;">
+                        <img src="images/Light_Logo.png" alt="ScritHTML Logo" style="height:160px;">
+                    </h1>
+                    <p class="hero-subtitle">v2.0 - ビルド不要、フレームワーク不要、シンプルにリアクティブ</p>
+                    <p class="hero-description">
+                        ビルド不要。フレームワーク不要。<br />
+                        HTMLに魔法のスープを振りかけるだけで、リアクティブなアプリが完成します。
+                    </p>
+                    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+                        <a href="Learn.html" class="btn-primary">今すぐ始める</a>
+
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <div class="demo-box glass" :style="{
+                width: site.boxSize + 'px', 
+                height: site.boxSize + 'px',
+                transform: 'rotate(' + site.boxRotate + 'deg)',
+                background: site.accent,
+                boxShadow: site.glow
+            }">
+                    </div>
+
+                    <div class="demo-controls">
+                        <div class="control-group">
+                            <label>Size: {site.boxSize}px</label>
+                            <input type="range" min="80" max="200" @input="site.boxSize = parseInt($event.target.value)" />
+                        </div>
+                        <div class="control-group">
+                            <label>Rotation: {site.boxRotate}°</label>
+                            <input type="range" min="0" max="360" @input="site.boxRotate = parseInt($event.target.value)" />
+                        </div>
+                        <div class="control-group">
+                            <label>Theme</label>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-primary"
+                                    @click="site.accent = '#22d3ee'; site.glow = '0 0 20px rgba(34, 211, 238, 0.2)'; site.isCyan = true">
+                                    Cyan
+                                </button>
+                                <button class="btn-primary"
+                                    @click="site.accent = '#a855f7'; site.glow = '0 0 20px rgba(168, 85, 247, 0.2)'; site.isCyan = false">
+                                    Purple
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="features">
+                <div class="feature-card glass">
+                    <div class="feature-icon">⚡</div>
+                    <h3>超高速リアクティビティ</h3>
+                    <p>シグナルベースの最小限DOM更新。無駄なレンダリングはゼロ。</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">🎨</div>
+                    <h3>宣言的UI構築</h3>
+                    <p>&lt;store&gt;, &lt;if&gt;, &lt;for&gt; タグで直感的にロジックを記述。</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">🚀</div>
+                    <h3>ゼロ・ビルドステップ</h3>
+                    <p>npm install不要。CDNから読み込むだけで即座に動作。</p>
+                </div>
+            </section>
+
+            <section class="code-showcase">
+                <h2 class="gradient-text">シンプルで強力</h2>
+                <div class="code-block">
+                    <div class="code-header">EXAMPLE.HTML</div>
+                    <pre><code>&lt;script src="scrit.js"&gt;&lt;/script&gt;
+
+&lt;body&gt;
+  &lt;store name="app"&gt;
+    &lt;value name="count"&gt;0&lt;/value&gt;
+  &lt;/store&gt;
+
+  &lt;h1&gt;&#123;app.count}&lt;/h1&gt;
+  &lt;button @click="app.count++"&gt;+&lt;/button&gt;
+&lt;/body&gt;</code></pre>
+                </div>
+                <p style="text-align: center; color: var(--text-secondary); margin-top: 20px;">
+                    たったこれだけで、完全なリアクティブアプリが完成。
+                </p>
+            </section>
+
+            <footer style="padding: 60px 5%; text-align: center; border-top: 1px solid var(--border);">
+                <p style="color: var(--text-secondary);">© 2026 ScritHTML Project. v2.0 "Pragmatic"</p>
+            </footer>
+
+            <event name="mount">
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.from(".hero-title", { duration: 1, opacity: 0, y: -50, ease: "power3.out" });
+                gsap.from(".hero-subtitle", { duration: 1, opacity: 0, y: -30, delay: 0.2, ease: "power3.out" });
+                gsap.from(".hero-description", { duration: 1, opacity: 0, y: -20, delay: 0.4, ease: "power3.out" });
+                gsap.from(".demo-box", { duration: 1.2, scale: 0, rotation: 180, delay: 0.6, ease: "back.out(1.7)" });
+                gsap.from(".feature-card", {
+                scrollTrigger: { trigger: ".features", start: "top 80%" },
+                duration: 0.8,
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                ease: "power2.out"
+                });
+            </event>
+</body>
+
+</html>

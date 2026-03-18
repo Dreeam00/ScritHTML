@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScritHTML Counter App</title>
+  <script src="../scrit.js"></script>
+  <style>
+    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
+    div { background-color: white; padding: 2em; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+    h1 { font-size: 3em; margin-bottom: 0.5em; color: #333; }
+    button { padding: 0.8em 1.5em; font-size: 1.2em; margin: 0.5em; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+    button:hover { opacity: 0.9; }
+    .increment { background-color: #4CAF50; color: white; }
+    .decrement { background-color: #f44336; color: white; }
+  </style>
+</head>
+<body>
+  <script type="text/scrit">
+  <div>
+    <$count>0</$count>
+
+    <h1>Count: { count }</h1>
+    <button class="increment" @click="count++">Increment</button>
+    <button class="decrement" @click="count--">Decrement</button>
+  </div>
+</script>
+</body>
+</html>

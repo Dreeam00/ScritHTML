@@ -1,0 +1,18 @@
+# Backups
+backups/
+*.bak
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Project-specific ignores
+.gemini/
+brain/
+*.log
+node_modules/
+.vscode/
+
+# Build/Dist (if any)
+dist/
+build/
